@@ -212,7 +212,9 @@ namespace AppBingo
             {
                 File.AppendAllText(caminhoArquivoAtual, textoFinal);
                 MessageBox.Show("Bingo finalizado e salvo no arquivo!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                MessageBox.Show("Iremos abrir o seu registro de bingo", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormRegistros tela = new FormRegistros();
+                tela.ShowDialog();
             }
             catch (Exception ex)
             {
