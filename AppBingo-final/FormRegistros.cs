@@ -17,6 +17,8 @@ namespace AppBingo
         {
             InitializeComponent();
         }
+
+
         //Função que retorna o camiunho da pasta 
         string GetCaminhoCadastro(string nomeCadastro)
         {
@@ -25,6 +27,8 @@ namespace AppBingo
 
             return Path.Combine(raizExe, nomeCadastro);
         }
+
+
         void ListarArquivos(string caminho)
         {
             //recuperar todos os arquivos .txt do caminho, onde cada arquivo tem seu diretório, onde cada diretório será uma string
@@ -46,24 +50,6 @@ namespace AppBingo
 
         }
 
-        private void btnCarregar_Click(object sender, EventArgs e)
-        {
-            //Iremos chamar o metodo para listar os arquivos 
-            //o nome da pasta deve possuir o mesmo nome utilizado na tela de cadastro no momento da gravação do arquivo
-
-            ListarArquivos(GetCaminhoCadastro("Clientes"));
-
-        }
-
-        private void lsbCadastros_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lsbCadastros.SelectedItems != null)
-            {
-                string caminhoArquivo = lsbCadastros.SelectedItem.ToString();
-                txtConteudo.Text = CarregarArquivo(caminhoArquivo);
-            }
-        }
-
         string CarregarArquivo(string arquivo)
         {
             string conteudo = "";
@@ -79,6 +65,23 @@ namespace AppBingo
             //Se teve algum problema e a variavel não foi copulada retorna vazio
             //se deu tudo certo retorna o conteúdo do arquiovo
             return conteudo;
+        }
+
+        private void lsbCadastros_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (lsbCadastros.SelectedItems != null)
+            {
+                string caminhoArquivo = lsbCadastros.SelectedItem.ToString();
+                txtConteudo.Text = CarregarArquivo(caminhoArquivo);
+            }
+        }
+
+        private void FormRegistros_Load(object sender, EventArgs e)
+        {
+            //Iremos chamar o metodo para listar os arquivos 
+            //o nome da pasta deve possuir o mesmo nome utilizado na tela de cadastro no momento da gravação do arquivo
+
+            ListarArquivos(GetCaminhoCadastro("Bingo"));
         }
     }
 }
